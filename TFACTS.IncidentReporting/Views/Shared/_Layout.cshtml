@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    
+    <!--Main Bootstrap CSS (needs otbe loaded before theme css)-->
+    @Styles.Render("~/Content/bootstrapCSS")
+
+    <!-- Bootstrap theme -->
+    <link id="themeCSS" href="@Url.Content("~/Content/css/amelia/bootstrap.css")" rel="stylesheet" type="text/css" />
+
+    <!--Kendo UI CDN References-->
+    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.rtl.min.css" rel="stylesheet" />
+    <link id="themeTelerik" href="http://cdn.kendostatic.com/2013.3.1119/styles/kendo.metroblack.min.css" rel="stylesheet" />
+    <!-- CDN-based stylesheet references for Kendo UI Mobile -->
+    <link href="http://cdn.kendostatic.com/2013.3.1324/styles/kendo.mobile.all.min.css" rel="stylesheet" />    
+   
+    @Styles.Render("~/Content/customCSS")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("TFACTS", "Index", "Home", new { }, new { @class = "navbar-brand" })
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" id="themes">Themes <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="themes">
+                            <li><a href="#" onclick="updateStyleSheet('', 'bootstrap'); return false;">Default</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" onclick="updateStyleSheet('amelia','black'); return false;">Amelia</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('cerulean', 'blueopal'); return false;">Cerulean</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('cosmo', 'metro'); return false;">Cosmo</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('cyborg', 'highcontrast'); return false;">Cyborg</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('flatly', 'flat'); return false;">Flatly</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('journal', 'moonlight'); return false;">Journal</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('lumen', 'silver'); return false;">Lumen</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('readable', 'uniform'); return false;">Readable</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('simplex', 'flat'); return false;">Simplex</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('slate', 'metroblack'); return false;">Slate</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('spacelab', 'highcontrast'); return false;">Spacelab</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('superhero', 'moonlight'); return false;">Superhero</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('united', 'silver'); return false;">United</a></li>
+                            <li><a href="#" onclick="updateStyleSheet('yeti', 'blueopal'); return false;">Yeti</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="help.html">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Department of Children's Services</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/telerikKendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/respond")
+    @Scripts.Render("~/bundles/customScripts")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

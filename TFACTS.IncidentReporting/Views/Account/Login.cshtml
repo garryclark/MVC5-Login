@@ -1,0 +1,35 @@
+﻿@model TFACTS.IncidentReporting.Models.LoginViewModel
+
+@*@{
+        ViewBag.Title = "Log in";
+    }
+
+    <h2>@ViewBag.Title.</h2>*@
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
+        <div class="well account-wall">
+            <h4 class="text-center">Incident Reporting Login</h4>
+            <img class="profile-img" src="~/content/images/sacwis_logo_TN.gif" alt="">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username", @autofocus = "autofocus", aria_required = true })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", aria_required = true })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnSubmit"> Sign in</button>
+                <a href="#" class="pull-right need-help">Need help? </a>
+                <span class="clearfix"></span>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
